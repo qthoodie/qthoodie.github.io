@@ -4,56 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="양원준의 개인 홈페이지" />
-    <title>양원준 | Personal Site</title>
+    <title>양원준 — Personal Site</title>
     <style>
-      :root { --ink: #172033; --muted: #5f6b7e; --line: #dce3ec; --paper: #fff; --mist: #f4f7fb; --blue: #2d5bba; --blue-pale: #e9f0ff; }
+      :root { --canvas:#010102; --surface:#0f1011; --surface-2:#141516; --ink:#f7f8f8; --muted:#d0d6e0; --subtle:#8a8f98; --line:#23252a; --line-strong:#34343a; --primary:#5e6ad2; --primary-hover:#828fff; --success:#27a644; }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
-      body { margin: 0; color: var(--ink); background: var(--mist); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif; line-height: 1.65; }
-      .site { width: min(100% - 2rem, 920px); margin: 0 auto; padding: 1rem 0 3rem; }
-      header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0 2.5rem; font-size: .94rem; }
-      .brand { font-weight: 750; letter-spacing: -.03em; }
-      nav { display: flex; gap: 1.1rem; }
-      nav a { color: var(--muted); text-decoration: none; }
-      nav a:hover, nav a:focus-visible { color: var(--blue); }
-      main { display: grid; gap: 1.25rem; }
-      .hero, .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; }
-      .hero { padding: clamp(2rem, 7vw, 4.8rem); background: linear-gradient(135deg, #fff 0%, #f3f7ff 100%); }
-      .eyebrow { margin: 0 0 1rem; color: var(--blue); font-size: .88rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
-      h1, h2 { letter-spacing: -.045em; line-height: 1.2; }
-      h1 { margin: 0; font-size: clamp(2.55rem, 9vw, 5.4rem); }
-      .lead { max-width: 36rem; margin: 1.25rem 0 0; color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.2rem); }
-      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-      .card { padding: clamp(1.5rem, 4vw, 2.2rem); }
-      h2 { margin: 0 0 1rem; font-size: 1.45rem; }
-      p { margin: 0; }
-      .interests { display: flex; flex-wrap: wrap; gap: .65rem; }
-      .tag { padding: .45rem .85rem; color: #21488f; background: var(--blue-pale); border-radius: 999px; font-weight: 650; }
-      .contact { display: grid; gap: .25rem; }
-      .contact a { width: fit-content; color: var(--blue); font-size: 1.08rem; font-weight: 700; overflow-wrap: anywhere; }
-      footer { padding: 2rem 0 0; color: var(--muted); font-size: .85rem; }
-      @media (max-width: 600px) { .site { width: min(100% - 1.25rem, 920px); padding-top: .25rem; } header { padding-bottom: 1.5rem; } nav { gap: .75rem; font-size: .86rem; } .grid { grid-template-columns: 1fr; } }
+      body { margin:0; background:var(--canvas); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","Noto Sans KR",sans-serif; letter-spacing:-.05px; line-height:1.5; }
+      a { color:inherit; }
+      .shell { width:min(100% - 40px, 1120px); margin:0 auto; }
+      .nav { min-height:56px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+      .mark { display:flex; align-items:center; gap:9px; text-decoration:none; font-size:14px; font-weight:600; letter-spacing:-.2px; }
+      .mark-symbol { width:18px; height:18px; display:grid; place-items:center; border-radius:5px; background:var(--primary); color:white; font-size:12px; }
+      .nav-links { display:flex; align-items:center; gap:24px; }
+      .nav-links a { color:var(--subtle); font-size:14px; text-decoration:none; }
+      .nav-links a:hover, .nav-links a:focus-visible { color:var(--ink); }
+      main { padding:96px 0 56px; }
+      .eyebrow { display:flex; align-items:center; gap:8px; margin:0 0 20px; color:var(--muted); font-size:13px; font-weight:500; letter-spacing:.4px; }
+      .status-dot { width:7px; height:7px; border-radius:50%; background:var(--success); }
+      h1,h2,p { margin:0; }
+      h1 { max-width:760px; font-size:clamp(48px,8vw,80px); font-weight:600; line-height:1.05; letter-spacing:clamp(-3px,-.25vw,-1px); }
+      .intro { max-width:580px; margin-top:28px; color:var(--muted); font-size:18px; line-height:1.5; letter-spacing:-.1px; }
+      .primary-link { display:inline-flex; align-items:center; min-height:40px; margin-top:32px; padding:8px 14px; border-radius:8px; background:var(--primary); color:#fff; font-size:14px; font-weight:500; text-decoration:none; }
+      .primary-link:hover { background:var(--primary-hover); }
+      .section { margin-top:96px; }
+      .section-label { margin-bottom:16px; color:var(--subtle); font-size:13px; font-weight:500; letter-spacing:.4px; }
+      .panel { border:1px solid var(--line); border-radius:16px; background:var(--surface); overflow:hidden; }
+      .profile-panel { display:grid; grid-template-columns:1.1fr .9fr; min-height:300px; }
+      .panel-copy { padding:40px; }
+      h2 { font-size:28px; font-weight:600; line-height:1.2; letter-spacing:-.6px; }
+      .panel-copy p { max-width:430px; margin-top:16px; color:var(--muted); font-size:16px; }
+      .profile-ui { align-self:stretch; padding:24px; border-left:1px solid var(--line); background:var(--surface-2); }
+      .ui-window { height:100%; min-height:230px; border:1px solid var(--line-strong); border-radius:12px; background:var(--canvas); padding:16px; }
+      .ui-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:15px; border-bottom:1px solid var(--line); color:var(--subtle); font-size:12px; }
+      .ui-dots { display:flex; gap:5px; }.ui-dots span { width:6px; height:6px; border-radius:50%; background:#3e3e44; }
+      .ui-row { display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px; }.ui-row strong { color:var(--ink); font-weight:500; }.ui-row:last-child { border:0; }
+      .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+      .card { min-height:210px; padding:24px; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
+      .card-kicker { color:var(--subtle); font-size:13px; }.card h2 { margin-top:38px; font-size:22px; font-weight:500; letter-spacing:-.4px; }.card p { margin-top:12px; color:var(--muted); font-size:14px; }
+      .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }.tag { padding:5px 9px; border:1px solid var(--line-strong); border-radius:6px; color:var(--muted); font-size:13px; }
+      .contact { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:40px; border:1px solid var(--line); border-radius:12px; background:var(--surface); }.contact p { margin-top:10px; color:var(--muted); }.email { display:inline-flex; align-items:center; min-height:40px; padding:8px 14px; border:1px solid var(--line-strong); border-radius:8px; color:var(--ink); font-size:14px; font-weight:500; text-decoration:none; white-space:nowrap; }.email:hover { border-color:var(--primary); color:var(--primary-hover); }
+      footer { display:flex; justify-content:space-between; padding:24px 0 40px; border-top:1px solid var(--line); color:var(--subtle); font-size:12px; }
+      @media (max-width:700px) { .shell { width:min(100% - 32px,1120px); }.nav-links { gap:14px; }.nav-links a { font-size:13px; } main { padding-top:64px; }.profile-panel,.cards { grid-template-columns:1fr; }.profile-ui { border-top:1px solid var(--line); border-left:0; }.panel-copy,.contact { padding:28px; }.section { margin-top:64px; }.contact { align-items:flex-start; flex-direction:column; }.email { white-space:normal; overflow-wrap:anywhere; } footer { gap:16px; flex-direction:column; } }
     </style>
   </head>
   <body>
-    <div class="site">
-      <header>
-        <div class="brand">YANG WONJUN</div>
-        <nav aria-label="페이지 탐색"><a href="#about">소개</a><a href="#interests">관심사</a><a href="#contact">연락처</a></nav>
+    <div class="shell">
+      <header class="nav">
+        <a class="mark" href="#top"><span class="mark-symbol">Y</span>Yang Wonjun</a>
+        <nav class="nav-links" aria-label="페이지 탐색"><a href="#about">소개</a><a href="#interests">관심사</a><a href="#contact">연락처</a></nav>
       </header>
-      <main>
-        <section class="hero" aria-labelledby="welcome">
-          <p class="eyebrow">Personal Website</p>
-          <h1 id="welcome">양원준</h1>
-          <p class="lead">서울대학교 첨단융합학부에서 배우고, 관심 있는 분야를 탐색하고 있습니다.</p>
+      <main id="top">
+        <p class="eyebrow"><span class="status-dot"></span> Currently learning and building</p>
+        <h1>생각을 만들고,<br />만든 것을 기록합니다.</h1>
+        <p class="intro">양원준입니다. 서울대학교 첨단융합학부에서 새로운 기술과 아이디어를 탐색하고 있습니다.</p>
+        <a class="primary-link" href="#contact">연락하기</a>
+        <section class="section" id="about" aria-labelledby="about-title">
+          <p class="section-label">01 — ABOUT</p>
+          <div class="panel profile-panel">
+            <div class="panel-copy"><h2 id="about-title">호기심을 바탕으로<br />배우고 연결합니다.</h2><p>기술이 사람의 경험을 더 선명하게 만들 수 있다고 생각합니다. 관심 있는 주제를 발견하고, 직접 시도하며, 나만의 언어로 정리해 나갑니다.</p></div>
+            <div class="profile-ui" aria-label="프로필 요약"><div class="ui-window"><div class="ui-top"><span>PROFILE / 2026</span><span class="ui-dots"><span></span><span></span><span></span></span></div><div class="ui-row"><span>NAME</span><strong>양원준</strong></div><div class="ui-row"><span>SCHOOL</span><strong>서울대학교</strong></div><div class="ui-row"><span>MAJOR</span><strong>첨단융합학부</strong></div></div></div>
+          </div>
         </section>
-        <div class="grid">
-          <section class="card" id="about" aria-labelledby="about-title"><h2 id="about-title">소개</h2><p>서울대학교 첨단융합학부에 재학 중입니다. 새로운 기술과 아이디어를 차분히 배우고 기록합니다.</p></section>
-          <section class="card" id="interests" aria-labelledby="interests-title"><h2 id="interests-title">관심사</h2><div class="interests"><span class="tag">그래픽</span><span class="tag">투자</span></div></section>
-        </div>
-        <section class="card contact" id="contact" aria-labelledby="contact-title"><h2 id="contact-title">연락처</h2><a href="mailto:qthoodie@snu.ac.kr">qthoodie@snu.ac.kr</a></section>
+        <section class="section" id="interests" aria-labelledby="interests-title">
+          <p class="section-label">02 — INTERESTS</p>
+          <div class="cards"><article class="card"><p class="card-kicker">01 / VISUAL</p><h2 id="interests-title">그래픽</h2><p>시각 언어가 정보를 더 명확하고 아름답게 전달하는 방식에 관심이 있습니다.</p><div class="tags"><span class="tag">Visual design</span><span class="tag">Graphics</span></div></article><article class="card"><p class="card-kicker">02 / MARKETS</p><h2>투자</h2><p>변화하는 산업과 시장을 관찰하며 장기적인 관점으로 생각하는 것을 좋아합니다.</p><div class="tags"><span class="tag">Research</span><span class="tag">Long term</span></div></article></div>
+        </section>
+        <section class="section" id="contact" aria-labelledby="contact-title">
+          <p class="section-label">03 — CONTACT</p>
+          <div class="contact"><div><h2 id="contact-title">함께 이야기해요.</h2><p>질문이나 제안이 있다면 편하게 연락해 주세요.</p></div><a class="email" href="mailto:qthoodie@snu.ac.kr">qthoodie@snu.ac.kr ↗</a></div>
+        </section>
       </main>
-      <footer>© 2026 Yang Wonjun</footer>
+      <footer><span>© 2026 Yang Wonjun</span><span>Built with HTML &amp; CSS</span></footer>
     </div>
   </body>
 </html>
